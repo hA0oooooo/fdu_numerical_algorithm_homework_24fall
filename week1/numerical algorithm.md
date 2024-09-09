@@ -1,12 +1,10 @@
 <font size = 4>
 <center>
 
-**Homework Assignment**
+**homework_20240903**
 </center>
 
-**Date Assigned:** September 3, 2024  
-**Due Date:** September 10, 2024, by 08:00 AM
-
+<br>
 
 **1.** Let \(\hat{x}\) be an approximation to \(x\). In practice it is often much easier to estimate \(\tilde{E}_{\text{rel}} = {|x - \hat{x}|}/{|\hat{x}|}\) compared to \({E}_{\text{rel}} = {|x - \hat{x}|}/{|x|}\). What is the relationship between \(E_{\text{rel}}\) and \(\tilde{E}_{\text{rel}}\)?
 
@@ -28,8 +26,6 @@ E_{\text{rel}}(\hat{x}) \approx \frac{|x - \hat{x}|}{|\hat{x}|} \cdot \frac{1}{1
 \]
 
 由此可以知道 \(E_{\text{rel}} < \tilde{E}_{\text{rel}}\).
-
-<br>
 
 在计算中，由于不知道 \(x\) 的值，通常使用 \(\tilde{E}_{\text{rel}} = {|x - \hat{x}|}/{|\hat{x}|} \), 但是 \(\tilde{E}_{\text{rel}}\) 中依然含 \(x\), 实际上可能会使用连续近似法：
 
@@ -135,6 +131,7 @@ i > j + \beta & \text{对应左下角}
 不难发现 \(A^T\) 也是带状矩阵, \(U^T\)是下三角矩阵, \(L^T\)是上三角矩阵. 按分析 \(A = LU\) 中 \(U\) 为带状矩阵的方法同理可获得：\(L^T\) 为带状矩阵, 因而 \(L\) 为带状矩阵, 考虑到转置不改变带宽, \(L\) 的半带宽也是 \(\beta\).
 
 
+<br>
 
 **4.** Find the exact \(LU\) factorization of the \(n \times n\) matrix
 
@@ -224,7 +221,7 @@ i > j + \beta & \text{对应左下角}
 -1 & -1 & -1 & \ldots & -1 & 1 \\
 \end{bmatrix} \).
 
-如此有 \(A = LU\), 
+如此有 \(A = LU\). 
 
 **5.** Implement Gaussian elimination (without pivoting) for solving non-singular linearsystems. You may assume that no divide-by-zero error is encountered. Measure the execution time of your program in terms of matrix dimensions and visualize the result by a log–log scale plot. (You may generate your test matrixes with normally distributed random elements.)
 
@@ -246,7 +243,7 @@ i > j + \beta & \text{对应左下角}
 
 理论上最多运算次数：
 \[
-frac{2n^3}{3} + O(n^2)
+\frac{2n^3}{3} + O(n^2)
 \]
 
 ```python
@@ -257,7 +254,8 @@ import matplotlib.pyplot as plt
 def gaussian_elimination(A, b):
     n = len(b)
     Ab = np.hstack([A, b.reshape(-1, 1)])
-    
+```
+```python    
     for i in range(n):
         for j in range(i+1, n):
             factor = Ab[j, i] / Ab[i, i]
@@ -268,19 +266,22 @@ def gaussian_elimination(A, b):
         x[i] = (Ab[i, -1] - np.dot(Ab[i, i+1:n], x[i+1:n])) / Ab[i, i]
     
     return x
-
+```
+```python
 def generate_test_matrix(n):
     A = np.random.randn(n, n)  
     b = np.random.randn(n)     
     return A, b
-
+```
+```python
 def measure_execution_time(n):
     A, b = generate_test_matrix(n)
     start_time = time.time()  
     gaussian_elimination(A, b) 
     end_time = time.time()     
     return end_time - start_time  
-
+```
+```python
 if __name__ == "__main__":
     dimensions = np.arange(10, 1001, 10)
     times = []
@@ -288,7 +289,6 @@ if __name__ == "__main__":
     for n in dimensions:
         exec_time = measure_execution_time(n)
         times.append(exec_time)
-
     log_dimensions = np.log10(dimensions)
     log_times = np.log10(times)
 
@@ -301,8 +301,13 @@ if __name__ == "__main__":
     plt.show()
 ```
 
-![alt text](T5_result.png)
+<center>
+<img src="T5_result.png" width="60%">
+</center>
 
+估计当矩阵的维度足够大时，拟合的直线斜率大约是 \(2\frac{2}{3}\)，小于理论最大斜率 \(3\) .
+
+<br>
 
 **6.** (optional) Write a program to solve the quadratic equation \(ax^2 + bx + c = 0\) with real coefficients. Describe how to avoid cancellation when the equation has a tiny root.
 
@@ -322,17 +327,19 @@ from math import sqrt
 def determinant(a, b, c):
     delta = b**2 - 4*a*c
     return delta
-
+```
+```python
 def is_root_real(a, b, c):
     delta = determinant(a, b, c)
     if delta >= 0:
         return True
     else:
         return False
-
+```
+```python
 def quad_fun_solve(a, b, c):
     if is_root_real(a, b, c):
-        delta = determinant(a, b, c)
+        delta = determinant(a, b, c)       
         # 判断是否会发生消元误差
         if abs(delta - abs(b)) < 1e-2:
             if b > 0:
@@ -347,10 +354,12 @@ def quad_fun_solve(a, b, c):
         return x1, x2
     else:
         return None
-
+```
+```python
 if __name__ == "__main__":
     a, b, c = map(float, input("请输入方程系数 a b c，例如 1 2 3 ").split())
-
+```
+```python
     result = quad_fun_solve(a, b, c)
     if result:
         x1, x2 = result
@@ -360,25 +369,28 @@ if __name__ == "__main__":
 
 ```
 
+
+
 **7.** (optional) Suppose that you are evaluating the harmonic series using IEEE double precision floating-point numbers and obtained a “converged” result. Make an estimate on when the computation converges, and what is the final result.
 
-```python
-def sum_inverse_x(n):
-    sum = 0
-    for i in range(1, n + 1):
-        sum += 1 / i
-    return sum
+假设调和级数的和IEEE 75464位双精度浮点数进行表示时二进制指数转换成的十进制指数是5，亦即先假设调和级数的和大概在32到64之间.
 
-if __name__ == "__main__":
-    i = 1
-    while True:
-        if sum_inverse_x(i) == sum_inverse_x(i + 1):
-            break
-        else:
-            i += 1
+而双精度浮点数不计入首位的有效位数为52位二进制数**，也就是说能精确表示的最小差异大约是 \( 2^{-52} \)，即约为 \( 2.22 \times 10^{-16} \)，结合假设的指数位置为 5，最小差异应该约为 \( 7.11 \times 10^{-15} \).
 
-    print('The harmonic series converges on', i)
-    
-```
+当 \( \frac{1}{n} \) 小于这个精度时，不再影响最终的结果，即当 \( \frac{1}{n} < 7.11 \times 10^{-15} \) 时，调和级数看上去就收敛了.
 
-</font>
+\[
+n > \frac{1}{7.11 \times 10^{-15}} \approx 1.41 \times 10^{14}
+\]
+
+检验此时的调和级数，有调和级数的估计：
+\[
+1 + \frac{1}{2} + \ldots + \frac{1}{n} = ln(n) + c \quad \quad
+c \approx 0.57721 \ldots
+\]
+
+估算调和级数大概是 \( ln(1.41 \times 10^{14}) + c \approx 33.15512748631743 \) ，符合假设.
+
+因此，当 \( n \) 达到约 \(1.41 \times 10^{14}\) 时，调和级数收敛至 \(33.16\).
+
+<font>
