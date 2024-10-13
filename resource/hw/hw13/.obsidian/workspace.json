@@ -1,0 +1,164 @@
+{
+  "main": {
+    "id": "39e86c09306c1ed4",
+    "type": "split",
+    "children": [
+      {
+        "id": "42edc64829202c8c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b9a4afe4b860e4b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "hw13.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1e036fbf4c0a3f35",
+    "type": "split",
+    "children": [
+      {
+        "id": "15f673e995cc1c62",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4c049cc48c0ccb2c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "714ada1af19dbab0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "db03ed509f5bd22e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "2c9fa555cf2cb0d7",
+    "type": "split",
+    "children": [
+      {
+        "id": "057516085b310a14",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e76d67f04a1b9fa7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "hw13.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3090c927fd90c925",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "hw13.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "375d4d7136798b6d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "61d25a4576b4a792",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "hw13.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-to-anki-plugin:Obsidian_to_Anki - Scan Vault": false
+    }
+  },
+  "active": "b9a4afe4b860e4b4",
+  "lastOpenFiles": [
+    "hw13pic4.jpg",
+    "hw13pic3.jpg",
+    "hw13pic2.png",
+    "hw13pic1 1.png",
+    "homework-20231212.pdf",
+    "hw13.md",
+    "prob03.py",
+    "如果不保持边界条件.png",
+    "如果保持边界条件.png",
+    "hw13pic1.png"
+  ]
+}
