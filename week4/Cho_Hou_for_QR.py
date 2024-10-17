@@ -93,8 +93,8 @@ for i in range(times):
         A = rand_matrix_by_kappa(n, kappa)
         Q1, R1 = cholesky_QR(A)
         Q2, R2 = householder_QR(A)
-        loss_cho.append(np.linalg.norm(Q1.conj().T @ Q1 - np.eye(n), 'fro'))
-        loss_hou.append(np.linalg.norm(Q2.conj().T @ Q2 - np.eye(n), 'fro'))
+        loss_cho.append(np.linalg.norm(Q1.conj().T @ Q1 - np.eye(n).astype(np.complex128), 'fro'))
+        loss_hou.append(np.linalg.norm(Q2.conj().T @ Q2 - np.eye(n).astype(np.complex128), 'fro'))
 
     for j in range(kappa_power):
         average_loss_cho[j] += loss_cho[j]
