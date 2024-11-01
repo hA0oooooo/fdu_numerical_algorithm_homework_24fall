@@ -74,7 +74,7 @@ def all_eigenvector_solver(origin_A):
     return eigenmatrix
 
 
-n = 5
+n = 100
 A = generate_uptri_with_distinct_diagentries(n)
 eigenmatrix = all_eigenvector_solver(A)
 # print(A)

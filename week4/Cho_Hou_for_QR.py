@@ -115,6 +115,6 @@ plt.grid()
 plt.title(f'Orthogonality Loss vs Condition Number for n = {n}')
 plt.show()
     
-    
+
 
 

@@ -1,7 +1,7 @@
-iter:  1 residual:  0.05872545134116358 closest eigenvalue:  0.9557055433619682
-iter:  2 residual:  3.96212218099351e-05 closest eigenvalue:  0.9571409127807825
-iter:  3 residual:  8.307798893270046e-13 closest eigenvalue:  0.9571409212158627
-iter:  4 residual:  2.220446049250313e-16 closest eigenvalue:  0.9571409212158626
-total time:  0.4687047004699707
+iter:  1 residual:  0.05669425517040261 closest eigenvalue:  0.9553204275311244
+iter:  2 residual:  4.817233871096116e-05 closest eigenvalue:  0.9571409069833385
+iter:  3 residual:  1.7141843500212417e-12 closest eigenvalue:  0.9571409212158632
+iter:  4 residual:  2.220446049250313e-16 closest eigenvalue:  0.9571409212158627
+total time:  0.01199960708618164
 target eigenvalue:  1.0
-closest eigenvalue:  0.9571409212158626
+closest eigenvalue:  0.9571409212158627
