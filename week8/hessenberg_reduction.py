@@ -62,26 +62,24 @@ def hessenberg_reduction_arnoldi(origin_A):
     
     A = np.copy(origin_A)
     n = n1
-    Q = np.zeros((n, n))
+    Q = np.zeros((n, n+1))
     b = generate_vector(n)
     Q[:, 0] = b / np.linalg.norm(b, ord=2)
-    H = np.zeros((n, n))
+    H = np.zeros((n+1, n))
 
-    for i in range(n-1):
+    for i in range(n):
         cur = A @ Q[:, [i]]
         for j in range(i+1):
             H[j, i] = np.dot(cur.T, Q[:, [j]]).item()
             cur = cur - H[j, i] * Q[:, [j]]
         H[i+1, i] = np.linalg.norm(cur, ord=2)
-        if H[i + 1, i] == 0:
+        if H[i+1, i] == 0:
             print(f'H[{i+1}, {i}] = 0')
-            return None
+            return H[:n, :n], Q[:n, :n]
         cur = cur / H[i+1, i]
         Q[:, [i+1]] = cur
     
-    H[:, [n-1]] = Q.T @ A @ Q[:, [n-1]]
-
-    return H, Q
+    return H[:n, :n], Q[:n, :n]
 
 
 def generate_vector(n):
@@ -93,9 +91,8 @@ def generate_vector(n):
     x = np.random.rand(n)
     return x
 
-
-n = 400
-number = 50
+n = 500
+number = 30
 accuracy_hou = []
 accuracy_arn = []
 ortho_loss_hou = []
@@ -117,26 +114,20 @@ axs[0, 0].set_title('the frobenius norm of (Q*AQ - H) using Householder reflecti
 axs[0, 0].set_xlabel('a few random matrices')
 axs[0, 0].set_ylabel('||Q*AQ - H||')
 
-
 axs[0, 1].bar(range(number), accuracy_arn, color='b', width=0.2)
 axs[0, 1].set_title('the frobenius norm of (Q*AQ - H) using Arnoldi process based on MGS')
 axs[0, 1].set_xlabel('a few random matrices')
 axs[0, 1].set_ylabel('||Q*AQ - H||')
-
-
 
 axs[1, 0].bar(range(number), ortho_loss_hou, color='b', width=0.2)
 axs[1, 0].set_title('the orthogonality loss of Q using Householder reflections')
 axs[1, 0].set_xlabel('a few random matrices')
 axs[1, 0].set_ylabel('||Q*Q - I||')
 
-
 axs[1, 1].bar(range(number), ortho_loss_arn, color='b', width=0.2)
 axs[1, 1].set_title('the orthogonality loss of Q using Arnoldi process based on MGS')
 axs[1, 1].set_xlabel('a few random matrices')
 axs[1, 1].set_ylabel('||Q*Q - I||')
-
-
 
 fig.suptitle(f'a few random {n}x{n} matrices', fontsize=14)
 
