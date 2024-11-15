@@ -78,7 +78,9 @@ def jacobi_pivoting(origin_A, tol=1e-10):
         rot_matrix[p, q] = sin0
         rot_matrix[q, p] = -sin0
         rot_matrix[q, q] = cos0
-        A = rot_matrix @ A @ rot_matrix.T
+        A[p, :], A[q, :] = cos0 * A[p, :] + sin0 * A[q, :], -sin0 * A[p, :] + cos0 * A[q, :]
+        A[:, p], A[:, q] = cos0 * A[:, p] + sin0 * A[:, q], -sin0 * A[:, p] + cos0 * A[:, q]            
+        # A = rot_matrix @ A @ rot_matrix.T
         Q = rot_matrix @ Q
         max_array.append(max)
         off_sum.append(off(A))
@@ -105,8 +107,9 @@ def jacobi_cyclic(origin_A, tol=1e-10):
                 rot_matrix[p, q] = sin0
                 rot_matrix[q, p] = -sin0
                 rot_matrix[q, q] = cos0
-                A = rot_matrix @ A @ rot_matrix.T
-                Q = rot_matrix @ Q
+                A[p, :], A[q, :] = cos0 * A[p, :] + sin0 * A[q, :], -sin0 * A[p, :] + cos0 * A[q, :]
+                A[:, p], A[:, q] = cos0 * A[:, p] + sin0 * A[:, q], -sin0 * A[:, p] + cos0 * A[:, q]            
+                # A = rot_matrix @ A @ rot_matrix.T
                 off_sum.append(off(A))
 
     return A, Q, off_sum
@@ -131,8 +134,9 @@ def jacobi_wrong_cyclic(origin_A, tol=1e-10):
                 rot_matrix[p, q] = sin0
                 rot_matrix[q, p] = -sin0
                 rot_matrix[q, q] = cos0
-                A = rot_matrix @ A @ rot_matrix.T
-                Q = rot_matrix @ Q
+                A[p, :], A[q, :] = cos0 * A[p, :] + sin0 * A[q, :], -sin0 * A[p, :] + cos0 * A[q, :]
+                A[:, p], A[:, q] = cos0 * A[:, p] + sin0 * A[:, q], -sin0 * A[:, p] + cos0 * A[:, q]            
+                # A = rot_matrix @ A @ rot_matrix.T
                 off_sum.append(off(A))
 
     return A, Q, off_sum
@@ -150,6 +154,7 @@ plt.ylabel('max off-diagonal element')
 plt.title(f'max off-diagonal of {n}x{n} matrix, Jacobi method, pivoting version, tol=1e-10') 
 plt.grid()
 plt.show()
+
 
 plt.figure(figsize=(12, 8))
 plt.plot(off_sum1)
@@ -175,3 +180,4 @@ plt.title(f'off-diagonal sum of {n}x{n} matrix, Jacobi method, wrong cyclic vers
 plt.grid()
 plt.show()
 
+print(len(off_sum3))
