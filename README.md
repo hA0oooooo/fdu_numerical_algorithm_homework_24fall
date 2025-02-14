@@ -1,2 +1,5 @@
 # fdu_numerical_algorithm_24fall
-record life
+
+### 1. record life
+
+### 2. to be continued...
